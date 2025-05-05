@@ -14,9 +14,9 @@ struct SGMenuView: View {
     @State private var showMiniGames = false
     @State private var showSettings = false
     
-    //    @StateObject var achievementVM = AchievementsViewModelSG()
-    //    @StateObject var settingsVM = SettingsViewModelSG()
-    //    @StateObject var shopVM = StoreViewModelSG()
+    @StateObject var achievementVM = AchievementsViewModelSaracen()
+        @StateObject var settingsVM = OptionsViewModelSaracen()
+        @StateObject var shopVM = StoreViewModelSG()
     
     var body: some View {
         
@@ -148,13 +148,13 @@ struct SGMenuView: View {
             //            MiniGamesChooseView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
-            //            AchievementsViewSG(viewModel: achievementVM)
+            SaracenAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-            //            ShopViewSG(viewModel: shopVM)
+            SaracenShopView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
-            //            SettingsViewSG(settingsVM: settingsVM)
+            SaracenOptionsView(settingsVM: settingsVM)
         }
         
         
