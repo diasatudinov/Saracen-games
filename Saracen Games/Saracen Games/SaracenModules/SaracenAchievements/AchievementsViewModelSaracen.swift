@@ -3,11 +3,11 @@ import SwiftUI
 class AchievementsViewModelSaracen: ObservableObject {
     
     @Published var achievements: [AchievementSaracen] = [
-        AchievementSaracen(name: "COMPLETE THE FIRST LEVEL", isAchieved: false),
-        AchievementSaracen(name: "Complete 5 levels in a row without any crashes", isAchieved: false),
-        AchievementSaracen(name: "Complete a bridge level without losing coins", isAchieved: false),
-        AchievementSaracen(name: "Complete all levels in a row without any crashes", isAchieved: false),
-        AchievementSaracen(name: "Collect 1000 coins", isAchieved: false)
+        AchievementSaracen(num: 1, name: "COMPLETE THE FIRST LEVEL", isAchieved: false),
+        AchievementSaracen(num: 2, name: "Complete 5 levels in a row without any crashes", isAchieved: false),
+        AchievementSaracen(num: 3, name: "Complete a bridge level without losing coins", isAchieved: false),
+        AchievementSaracen(num: 4, name: "Complete all levels in a row without any crashes", isAchieved: false),
+        AchievementSaracen(num: 5, name: "Collect 1000 coins", isAchieved: false)
 
     ] {
         didSet {
@@ -50,6 +50,7 @@ class AchievementsViewModelSaracen: ObservableObject {
 
 struct AchievementSaracen: Codable, Hashable, Identifiable {
     var id = UUID()
+    var num: Int
     var name: String
     var isAchieved: Bool
 }

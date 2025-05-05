@@ -23,7 +23,7 @@ struct SGMenuView: View {
         ZStack {
             VStack(spacing: 0) {
                 HStack(alignment: .top) {
-                    CoinBgSG()
+                    CoinBgSaracen()
                     
                     Spacer()
                     
@@ -56,7 +56,7 @@ struct SGMenuView: View {
                                 .scaledToFit()
                                 .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorder(text: "Play", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Play", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -74,7 +74,7 @@ struct SGMenuView: View {
                                 .scaledToFit()
                                 .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorder(text: "Options", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Options", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -91,7 +91,7 @@ struct SGMenuView: View {
                                 .scaledToFit()
                                 .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorder(text: "Mini Games", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 64:32, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Mini Games", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 64:32, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -108,7 +108,7 @@ struct SGMenuView: View {
                                 .scaledToFit()
                                 .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorder(text: "Achievements", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Achievements", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             

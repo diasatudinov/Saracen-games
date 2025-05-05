@@ -1,18 +1,114 @@
-//
-//  SaracenAchievementsView.swift
-//  Saracen Games
-//
-//  Created by Dias Atudinov on 05.05.2025.
-//
-
 import SwiftUI
 
 struct SaracenAchievementsView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: AchievementsViewModelSaracen
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            
+            VStack {
+                
+                HStack(alignment: .top) {
+                    CoinBgSaracen()
+                    Spacer()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                        
+                    } label: {
+                        Image(.homeIconSaracen)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                    }
+                    
+                }
+                
+                
+                VStack(alignment: .leading) {
+                    ForEach(viewModel.achievements) { achievement in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                
+                                TextWithBorderSaracen(text: "\(achievement.num)", font: .system(size: 27, weight: .black), textColor: .main, borderColor: .white, borderWidth: 1)
+                                
+                                TextWithBorderSaracen(text: "\(achievement.name)", font: .system(size: 19, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                    .textCase(.uppercase)
+                                
+                            }
+                            
+                            HStack {
+                                Spacer()
+                                if achievement.isAchieved {
+                                    Image(.dollarIconSaracen)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 54)
+                                    
+                                    ZStack {
+                                        Image(.moneyBgSaracen)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 36)
+                                        
+                                        Text("+10")
+                                            .font(.system(size: 25, weight: .black))
+                                            .foregroundStyle(.white)
+                                    }
+                                } else {
+                                    ZStack {
+                                        
+                                        Image(.dollarIconSaracen)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 54)
+                                            .overlay {
+                                                Color.black.opacity(0.5)
+                                                    .cornerRadius(4)
+                                            }
+                                        
+                                        Image(.lockSaracen)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 40)
+                                    }
+                                    ZStack {
+                                        Image(.moneyBgSaracen)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 36)
+                                            .overlay {
+                                                Color.black.opacity(0.5)
+                                                    .cornerRadius(4)
+                                            }
+                                        
+                                        TextWithBorderSaracen(text: "+10", font: .system(size: 25, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                            .textCase(.uppercase)
+                                    }
+                                }
+                                Spacer()
+                            }.onTapGesture {
+                                viewModel.achieveToggle(achievement)
+                            }
+                            
+                        }
+                    }
+                }
+                
+                Spacer()
+            }.padding(30)
+        }.background(
+            ZStack {
+               
+                Image(.menuBgSaracen)
+                    .resizable()
+                    
+                Color.black.opacity(0.5)
+            }.edgesIgnoringSafeArea(.all)
+        )
     }
 }
 
 #Preview {
-    SaracenAchievementsView()
+    SaracenAchievementsView(viewModel: AchievementsViewModelSaracen())
 }
