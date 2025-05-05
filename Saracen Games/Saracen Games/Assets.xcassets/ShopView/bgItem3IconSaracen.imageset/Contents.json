@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bgItem3IconSaracen.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
