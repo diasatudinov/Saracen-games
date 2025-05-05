@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "loaderIconSG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "homeIconSaracen.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
