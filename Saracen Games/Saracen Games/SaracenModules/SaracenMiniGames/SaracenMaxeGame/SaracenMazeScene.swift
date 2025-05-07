@@ -14,7 +14,7 @@ class SaracenMazeScene: SKScene {
     private var exitNode: SKSpriteNode!
     var isWinHandler: (() -> ())?
 
-    private let wallThicknessFactor: CGFloat = 0.4  // 20% of cell side
+    private let wallThicknessFactor: CGFloat = 0.4  
 
     // MARK: - Lifecycle
     override func didMove(to view: SKView) {
