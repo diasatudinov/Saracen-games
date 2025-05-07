@@ -28,7 +28,7 @@ struct SaracenMazeGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }
                         Spacer()
                         Button {
@@ -38,7 +38,7 @@ struct SaracenMazeGameView: View {
                             Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }
 
                     }.padding([.horizontal, .top])
@@ -54,16 +54,16 @@ struct SaracenMazeGameView: View {
                         Image(.controlArrowSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                     }
-                    HStack(spacing: SGDeviceManager.shared.deviceType == .pad ? 100:50) {
+                    HStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50) {
                         Button {
                             gameScene.moveLeft()
                         } label: {
                             Image(.controlArrowSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 .rotationEffect(.degrees(90))
                                 .scaleEffect(x: -1, y: 1)
                         }
@@ -74,7 +74,7 @@ struct SaracenMazeGameView: View {
                             Image(.controlArrowSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 .rotationEffect(.degrees(90))
                         }
                     }
@@ -85,7 +85,7 @@ struct SaracenMazeGameView: View {
                         Image(.controlArrowSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .scaleEffect(x: 1, y: -1)
                     }
                 }
@@ -108,10 +108,10 @@ struct SaracenMazeGameView: View {
                         Image(.restartIconSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                     }.offset(y: 20)
                     
-                }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
             }
             
         }.background(

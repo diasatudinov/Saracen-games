@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SGSplashScreen: View {
+struct SaracenSplashScreen: View {
     @State private var scale: CGFloat = 1.0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
@@ -73,5 +73,5 @@ struct SGSplashScreen: View {
 }
 
 #Preview {
-    SGSplashScreen()
+    SaracenSplashScreen()
 }

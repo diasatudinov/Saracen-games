@@ -5,38 +5,38 @@ enum StoreSection: Codable, Hashable {
     case skin
 }
 
-class StoreViewModelSG: ObservableObject {
-    @Published var shopTeamItems: [Item] = [
+class SaracenStoreViewModel: ObservableObject {
+    @Published var shopTeamItems: [ItemSaracen] = [
         
-        Item(name: "bg2", image: "gameBg2SG", icon: "bgItem2IconSaracen", section: .backgrounds, price: 100),
-        Item(name: "bg1", image: "gameBg1SG", icon: "bgItem1IconSaracen", section: .backgrounds, price: 100),
-        Item(name: "bg3", image: "gameBg3SG", icon: "bgItem3IconSaracen", section: .backgrounds, price: 100),
-        Item(name: "bg4", image: "gameBg4SG", icon: "bgItem4IconSaracen", section: .backgrounds, price: 100),
+        ItemSaracen(name: "bg2", image: "gameBg2SG", icon: "bgItem2IconSaracen", section: .backgrounds, price: 100),
+        ItemSaracen(name: "bg1", image: "gameBg1SG", icon: "bgItem1IconSaracen", section: .backgrounds, price: 100),
+        ItemSaracen(name: "bg3", image: "gameBg3SG", icon: "bgItem3IconSaracen", section: .backgrounds, price: 100),
+        ItemSaracen(name: "bg4", image: "gameBg4SG", icon: "bgItem4IconSaracen", section: .backgrounds, price: 100),
         
         
-        Item(name: "skin1", image: "imageSkin1SG", icon: "iconSkin1Saracen", section: .skin, price: 100),
-        Item(name: "skin2", image: "imageSkin2SG", icon: "iconSkin2Saracen", section: .skin, price: 100),
-        Item(name: "skin3", image: "imageSkin3SG", icon: "iconSkin3Saracen", section: .skin, price: 100),
-        Item(name: "skin4", image: "imageSkin4SG", icon: "iconSkin4Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin1", image: "imageSkin1SG", icon: "iconSkin1Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin2", image: "imageSkin2SG", icon: "iconSkin2Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin3", image: "imageSkin3SG", icon: "iconSkin3Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin4", image: "imageSkin4SG", icon: "iconSkin4Saracen", section: .skin, price: 100),
          
     ]
     
-    @Published var boughtItems: [Item] = [
-        Item(name: "bg2", image: "gameBg2SG", icon: "bgItem2IconSaracen", section: .backgrounds, price: 100),
-        Item(name: "skin1", image: "imageSkin1SG", icon: "iconSkin1SG", section: .skin, price: 100),
+    @Published var boughtItems: [ItemSaracen] = [
+        ItemSaracen(name: "bg2", image: "gameBg2SG", icon: "bgItem2IconSaracen", section: .backgrounds, price: 100),
+        ItemSaracen(name: "skin1", image: "imageSkin1SG", icon: "iconSkin1SG", section: .skin, price: 100),
     ] {
         didSet {
             saveBoughtItem()
         }
     }
     
-    @Published var currentBgItem: Item? {
+    @Published var currentBgItem: ItemSaracen? {
         didSet {
             saveCurrentBg()
         }
     }
     
-    @Published var currentPersonItem: Item? {
+    @Published var currentPersonItem: ItemSaracen? {
         didSet {
             saveCurrentPerson()
         }
@@ -63,7 +63,7 @@ class StoreViewModelSG: ObservableObject {
     
     func loadCurrentBg() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsBgKey),
-           let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode(ItemSaracen.self, from: savedData) {
             currentBgItem = loadedItem
         } else {
             currentBgItem = shopTeamItems[0]
@@ -81,7 +81,7 @@ class StoreViewModelSG: ObservableObject {
     
     func loadCurrentPerson() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsPersonKey),
-           let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode(ItemSaracen.self, from: savedData) {
             currentPersonItem = loadedItem
         } else {
             currentPersonItem = shopTeamItems[4]
@@ -98,7 +98,7 @@ class StoreViewModelSG: ObservableObject {
     
     func loadBoughtItem() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsBoughtKey),
-           let loadedItem = try? JSONDecoder().decode([Item].self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode([ItemSaracen].self, from: savedData) {
             boughtItems = loadedItem
         } else {
             print("No saved data found")
@@ -107,7 +107,7 @@ class StoreViewModelSG: ObservableObject {
     
 }
 
-struct Item: Codable, Hashable {
+struct ItemSaracen: Codable, Hashable {
     var id = UUID()
     var name: String
     var image: String

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SaracenRepeatSequenceGameView: View {
-    @StateObject var user = SGUser.shared
+    @StateObject var user = UserSaracen.shared
     @Environment(\.presentationMode) var presentationMode
     
     // Names of the images in your Assets catalog
@@ -35,7 +35,7 @@ struct SaracenRepeatSequenceGameView: View {
                                 Image(.restartIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 160:80)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 160:80)
                             }
                             Spacer()
                             Button {
@@ -45,7 +45,7 @@ struct SaracenRepeatSequenceGameView: View {
                                 Image(.homeIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
                             }
                             
                         }.padding([.horizontal, .top])
@@ -58,7 +58,7 @@ struct SaracenRepeatSequenceGameView: View {
                 if gamePhase == .showing {
                     if let idx = currentStep {
                         MemorizationCardView(imageName: cardImages[idx])
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 600:300)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 600:300)
                             .padding()
                             .transition(.opacity)
                     }
@@ -97,10 +97,10 @@ struct SaracenRepeatSequenceGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }.offset(y: 20)
                         
-                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                    }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                 } else {
                     ZStack(alignment: .bottom) {
                         Image(.repeatGameLoseBgSaracen)
@@ -114,10 +114,10 @@ struct SaracenRepeatSequenceGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }.offset(y: 20)
                         
-                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                    }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                 }
             }
         }

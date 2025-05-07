@@ -3,7 +3,7 @@ import SpriteKit
 
 
 struct SaracenMazeViewContainer: UIViewRepresentable {
-    @StateObject var user = SGUser.shared
+    @StateObject var user = UserSaracen.shared
     var scene: SaracenMazeScene
     @Binding var isWin: Bool
     func makeUIView(context: Context) -> SKView {

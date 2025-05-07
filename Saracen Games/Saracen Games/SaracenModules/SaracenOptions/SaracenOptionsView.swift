@@ -16,7 +16,7 @@ struct SaracenOptionsView: View {
                         Image(.homeIconSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                     }
                     
                 }
@@ -36,7 +36,7 @@ struct SaracenOptionsView: View {
                             Image(settingsVM.soundEnabled ? .onSaracen:.offSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 70:35)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 70:35)
                                 .onTapGesture {
                                     withAnimation {
                                         settingsVM.soundEnabled.toggle()
@@ -49,7 +49,7 @@ struct SaracenOptionsView: View {
                             Image(settingsVM.musicEnabled ? .onSaracen:.offSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 70:35)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 70:35)
                                 .onTapGesture {
                                     withAnimation {
                                         settingsVM.musicEnabled.toggle()

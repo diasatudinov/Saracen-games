@@ -9,12 +9,12 @@ struct SaracenCardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 200:120)
             } else {
                 Image(.cardBackSaracen)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 200:120)
             }
         }
     }

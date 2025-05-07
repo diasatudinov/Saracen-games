@@ -1,7 +1,7 @@
 import UIKit
 
-class SGDeviceManager {
-    static let shared = SGDeviceManager()
+class SaracenDeviceInfo {
+    static let shared = SaracenDeviceInfo()
     
     var deviceType: UIUserInterfaceIdiom
     

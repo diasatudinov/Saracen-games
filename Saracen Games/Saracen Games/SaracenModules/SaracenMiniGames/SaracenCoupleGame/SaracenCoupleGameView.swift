@@ -4,7 +4,7 @@ import AVFoundation
 struct SaracenCoupleGameView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @StateObject var user = SGUser.shared
+    @StateObject var user = UserSaracen.shared
     @State private var audioPlayer: AVAudioPlayer?
     
     @State private var cards: [SaracenCard] = []
@@ -33,7 +33,7 @@ struct SaracenCoupleGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 160:80)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 160:80)
                         }
                         
                         Spacer()
@@ -41,9 +41,9 @@ struct SaracenCoupleGameView: View {
                             Image(.circleIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 152:76)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 152:76)
                             
-                            TextWithBorderSaracen(text: "\(timeLeft)", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 72:36, weight: .bold), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "\(timeLeft)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 72:36, weight: .bold), textColor: .white, borderColor: .main, borderWidth: 1)
                             
                         }
                         Spacer()
@@ -55,21 +55,21 @@ struct SaracenCoupleGameView: View {
                             Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 160:80)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 160:80)
                         }
                         
                         
                     }.padding()
                     Spacer()
-                    VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? -40:-20) {
+                    VStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? -40:-20) {
                         ZStack {
                             Image(.gameTextBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 110:55)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 110:55)
                             
                             Text("MATCH THE CARDS")
-                                .font(.system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
+                                .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 48:24, weight: .black))
                                 .foregroundStyle(.white)
                             
                         }
@@ -88,7 +88,7 @@ struct SaracenCoupleGameView: View {
                         }
                         
                     }
-                    .frame(width: SGDeviceManager.shared.deviceType == .pad ? 500:350)
+                    .frame(width: SaracenDeviceInfo.shared.deviceType == .pad ? 500:350)
                    Spacer()
                 }
                 .onAppear {
@@ -111,10 +111,10 @@ struct SaracenCoupleGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }.offset(y: 20)
                         
-                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                    }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                 } else {
                     ZStack(alignment: .bottom) {
                         Image(.coupleGameLoseBgSaracen)
@@ -128,10 +128,10 @@ struct SaracenCoupleGameView: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                         }.offset(y: 20)
                         
-                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                    }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                 }
             }
            

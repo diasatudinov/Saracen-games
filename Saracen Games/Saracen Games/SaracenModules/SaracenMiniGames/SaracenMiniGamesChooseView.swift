@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MiniGamesChooseView: View {
+struct SaracenMiniGamesChooseView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var game1 = false
     @State private var game2 = false
@@ -20,7 +20,7 @@ struct MiniGamesChooseView: View {
                             Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
                         }
                         
                     }.padding([.horizontal, .top])
@@ -35,9 +35,9 @@ struct MiniGamesChooseView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "GUESS THE NUMBER", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "GUESS THE NUMBER", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -53,9 +53,9 @@ struct MiniGamesChooseView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "MATCH THE CARDS", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "MATCH THE CARDS", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -71,9 +71,9 @@ struct MiniGamesChooseView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "SIMON SAYS", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "SIMON SAYS", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -88,9 +88,9 @@ struct MiniGamesChooseView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "MAZE CHALLENGE", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "MAZE CHALLENGE", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -127,5 +127,5 @@ struct MiniGamesChooseView: View {
 }
 
 #Preview {
-    MiniGamesChooseView()
+    SaracenMiniGamesChooseView()
 }

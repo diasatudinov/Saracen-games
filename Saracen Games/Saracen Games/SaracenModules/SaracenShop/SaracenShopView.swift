@@ -2,9 +2,9 @@ import SwiftUI
 
 struct SaracenShopView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = SGUser.shared
+    @StateObject var user = UserSaracen.shared
     @State var section: StoreSection? = nil
-    @ObservedObject var viewModel: StoreViewModelSG
+    @ObservedObject var viewModel: SaracenStoreViewModel
     
     let columns = [
         GridItem(.flexible()),
@@ -49,9 +49,9 @@ struct SaracenShopView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "BACKGROUND", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 56:28, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "BACKGROUND", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 56:28, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                             
                                 .textCase(.uppercase)
                             
@@ -69,9 +69,9 @@ struct SaracenShopView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "BOAT", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 56:28, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "BOAT", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 56:28, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                             
                                 .textCase(.uppercase)
                             
@@ -101,7 +101,7 @@ struct SaracenShopView: View {
                             Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
                         }
                         
                         
@@ -121,7 +121,7 @@ struct SaracenShopView: View {
         )
     }
     
-    @ViewBuilder func achievementItem(item: Item) -> some View {
+    @ViewBuilder func achievementItem(item: ItemSaracen) -> some View {
         
         VStack {
             ZStack {
@@ -133,8 +133,8 @@ struct SaracenShopView: View {
                     Image(item.icon)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: SGDeviceManager.shared.deviceType == .pad ? 230:115)
-                        .padding(.top, SGDeviceManager.shared.deviceType == .pad ? 40:20)
+                        .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 230:115)
+                        .padding(.top, SaracenDeviceInfo.shared.deviceType == .pad ? 40:20)
                     
                     Spacer()
                     
@@ -142,8 +142,8 @@ struct SaracenShopView: View {
                         Image(.availableTextSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 68:34)
-                            .padding(.bottom,SGDeviceManager.shared.deviceType == .pad ? 32: 16)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 68:34)
+                            .padding(.bottom,SaracenDeviceInfo.shared.deviceType == .pad ? 32: 16)
                     } else {
                         ZStack {
                             Image(.priceBgSaracen)
@@ -151,16 +151,16 @@ struct SaracenShopView: View {
                                 .scaledToFit()
                             
                             Text("100")
-                                .font(.system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
+                                .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 48:24, weight: .black))
                                 .foregroundStyle(.white)
-                                .offset(x: SGDeviceManager.shared.deviceType == .pad ? 40:20)
+                                .offset(x: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20)
                         }
-                        .frame(height: SGDeviceManager.shared.deviceType == .pad ? 80:40)
-                        .padding(.bottom, SGDeviceManager.shared.deviceType == .pad ? 26:13)
+                        .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 80:40)
+                        .padding(.bottom, SaracenDeviceInfo.shared.deviceType == .pad ? 26:13)
                     }
                 }
                 
-            }.frame(height: SGDeviceManager.shared.deviceType == .pad ? 416:208)
+            }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 416:208)
             
             Button {
                 if item.section == .skin {
@@ -198,13 +198,13 @@ struct SaracenShopView: View {
                                 Image(.selectedIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                             } else {
                                 
                                 Image(.lockedIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 
                                 
                             }
@@ -217,7 +217,7 @@ struct SaracenShopView: View {
                             Image(.buyBtnSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                             
                             
                         }
@@ -232,13 +232,13 @@ struct SaracenShopView: View {
                                 Image(.selectedIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                             } else {
                                 
                                 Image(.lockedIconSaracen)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 
                                 
                             }
@@ -251,7 +251,7 @@ struct SaracenShopView: View {
                             Image(.buyBtnSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
                             
                             
                         }
@@ -265,5 +265,5 @@ struct SaracenShopView: View {
 }
 
 #Preview {
-    SaracenShopView(viewModel: StoreViewModelSG())
+    SaracenShopView(viewModel: SaracenStoreViewModel())
 }

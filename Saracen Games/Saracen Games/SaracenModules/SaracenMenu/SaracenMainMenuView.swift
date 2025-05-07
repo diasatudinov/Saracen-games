@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SGMenuView: View {
+struct SaracenMainMenuView: View {
     @State private var showGame = false
     @State private var showShop = false
     @State private var showAchievement = false
@@ -8,8 +8,8 @@ struct SGMenuView: View {
     @State private var showSettings = false
     
     @StateObject var achievementVM = AchievementsViewModelSaracen()
-        @StateObject var settingsVM = OptionsViewModelSaracen()
-        @StateObject var shopVM = StoreViewModelSG()
+    @StateObject var settingsVM = OptionsViewModelSaracen()
+    @StateObject var shopVM = SaracenStoreViewModel()
     
     var body: some View {
         
@@ -26,7 +26,7 @@ struct SGMenuView: View {
                         Image(.shopIconSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                     }
                     
                 }.padding(.bottom)
@@ -34,10 +34,10 @@ struct SGMenuView: View {
                 Image(.logoIconSG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 320:160)
+                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 320:160)
                     .padding(.bottom)
                 
-                VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? 80:40) {
+                VStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 80:40) {
                     Button {
                         showGame = true
                         
@@ -47,9 +47,9 @@ struct SGMenuView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "Play", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Play", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -65,9 +65,9 @@ struct SGMenuView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "Options", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Options", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 85:43, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -82,9 +82,9 @@ struct SGMenuView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "Mini Games", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 64:32, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Mini Games", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 64:32, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -99,9 +99,9 @@ struct SGMenuView: View {
                             Image(.btnBgSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:90)
                             
-                            TextWithBorderSaracen(text: "Achievements", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                            TextWithBorderSaracen(text: "Achievements", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 48:24, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 .textCase(.uppercase)
                             
@@ -122,23 +122,23 @@ struct SGMenuView: View {
                     .scaledToFill()
             }
         )
-        //                    .onAppear {
-        //                        if settingsVM.musicEnabled {
-        //                            GEMusicManager.shared.playBackgroundMusic()
-        //                        }
-        //                    }
-        //                    .onChange(of: settingsVM.musicEnabled) { enabled in
-        //                        if enabled {
-        //                            GEMusicManager.shared.playBackgroundMusic()
-        //                        } else {
-        //                            GEMusicManager.shared.stopBackgroundMusic()
-        //                        }
-        //                    }
+//        .onAppear {
+//            if settingsVM.musicEnabled {
+//                GEMusicManager.shared.playBackgroundMusic()
+//            }
+//        }
+//        .onChange(of: settingsVM.musicEnabled) { enabled in
+//            if enabled {
+//                GEMusicManager.shared.playBackgroundMusic()
+//            } else {
+//                GEMusicManager.shared.stopBackgroundMusic()
+//            }
+//        }
         .fullScreenCover(isPresented: $showGame) {
             //            ChooseLevelView(shopVM: shopVM, achievementVM: achievementVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
-            //            MiniGamesChooseView()
+            SaracenMiniGamesChooseView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
             SaracenAchievementsView(viewModel: achievementVM)
@@ -158,5 +158,5 @@ struct SGMenuView: View {
 }
 
 #Preview {
-    SGMenuView()
+    SaracenMainMenuView()
 }

@@ -19,7 +19,7 @@ struct SaracenAchievementsView: View {
                         Image(.homeIconSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                     }
                     
                 }

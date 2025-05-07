@@ -16,7 +16,7 @@ struct SaracenGuessNumberGame: View {
 
         var body: some View {
             ZStack {
-                VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? 40:20) {
+                VStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20) {
 
                     HStack(alignment: .top) {
                         
@@ -27,7 +27,7 @@ struct SaracenGuessNumberGame: View {
                             Image(.restartIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 160:80)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 160:80)
                         }
                         
                         Spacer()
@@ -39,7 +39,7 @@ struct SaracenGuessNumberGame: View {
                             Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
                         }
                     }.padding([.horizontal, .top])
 
@@ -47,10 +47,10 @@ struct SaracenGuessNumberGame: View {
                         Image(.gameTextBgSaracen)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 110:55)
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 110:55)
                         
                         Text("GUESS THE NUMBER")
-                            .font(.system(size: SGDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
+                            .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 48:24, weight: .black))
                             .foregroundStyle(.white)
                         
                     }
@@ -65,14 +65,14 @@ struct SaracenGuessNumberGame: View {
                                 TextWithBorderSaracen(text: idx < guessDigits.count ? guessDigits[idx] : "" , font: .system(size: 36, weight: .bold), textColor: .white, borderColor: .main, borderWidth: 1)
                                 
                                 
-                            }.frame(width: SGDeviceManager.shared.deviceType == .pad ? 150:100, height: SGDeviceManager.shared.deviceType == .pad ? 150:100)
+                            }.frame(width: SaracenDeviceInfo.shared.deviceType == .pad ? 150:100, height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:100)
                         }
                     }
                     .padding(.vertical)
 
 
                     let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-                    LazyVGrid(columns: columns, spacing: SGDeviceManager.shared.deviceType == .pad ? 24:12) {
+                    LazyVGrid(columns: columns, spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 24:12) {
                         ForEach(padNumbers, id: \ .self) { num in
                             Button(action: { numberPressed(num) }) {
                                 ZStack {
@@ -80,13 +80,13 @@ struct SaracenGuessNumberGame: View {
                                         .resizable()
                                         .scaledToFit()
                                     Text("\(num)")
-                                        .font(.system(size: SGDeviceManager.shared.deviceType == .pad ? 96:48, weight: .bold))
+                                        .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 96:48, weight: .bold))
                                         .foregroundColor(.white)
-                                }.frame(width: SGDeviceManager.shared.deviceType == .pad ? 150:100, height: SGDeviceManager.shared.deviceType == .pad ? 150:100)
+                                }.frame(width: SaracenDeviceInfo.shared.deviceType == .pad ? 150:100, height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:100)
                             }
                             .disabled(guessDigits.count >= 3)
                         }
-                    }.frame(width: SGDeviceManager.shared.deviceType == .pad ? 500:350)
+                    }.frame(width: SaracenDeviceInfo.shared.deviceType == .pad ? 500:350)
                     .padding(.horizontal)
 
                     Spacer()
@@ -109,7 +109,7 @@ struct SaracenGuessNumberGame: View {
                                 TextWithBorderSaracen(text: "INCORRECT,\n GUESS Higher!", font: .system(size: 34, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                     .multilineTextAlignment(.center)
                                     .textCase(.uppercase)
-                            }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                            }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                             
                         } else if Int(guessDigits.joined()) ?? 0 > target{
                             ZStack {
@@ -119,7 +119,7 @@ struct SaracenGuessNumberGame: View {
                                 TextWithBorderSaracen(text: "INCORRECT,\n GUESS LOWER!", font: .system(size: 34, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
                                     .multilineTextAlignment(.center)
                                
-                            }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                            }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                             
                         } else {
                             ZStack(alignment: .bottom) {
@@ -135,10 +135,10 @@ struct SaracenGuessNumberGame: View {
                                     Image(.restartIconSaracen)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                        .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
                                 }.offset(y: 20)
                                 
-                            }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                            }.frame(height:  SaracenDeviceInfo.shared.deviceType == .pad ? 878:439)
                             
                         }
                     
@@ -171,7 +171,7 @@ struct SaracenGuessNumberGame: View {
             feedback = "Too high!"
         } else {
             feedback = "You got it in \(attempts) tries!"
-            SGUser.shared.updateUserMoney(for: 20)
+            UserSaracen.shared.updateUserMoney(for: 20)
         }
         if feedback.starts(with: "You got it") {
         } else {
