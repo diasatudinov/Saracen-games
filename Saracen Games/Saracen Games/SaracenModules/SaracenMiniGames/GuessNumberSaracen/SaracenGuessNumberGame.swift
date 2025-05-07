@@ -191,6 +191,6 @@ struct SaracenGuessNumberGame: View {
 }
 
 #Preview {
-                SaracenGuessNumberGame()
+    SaracenGuessNumberGame()
 }
 

@@ -10,89 +10,118 @@ struct MiniGamesChooseView: View {
         ZStack {
             VStack {
                 HStack {
+                    CoinBgSaracen()
+                    Spacer()
                     HStack(alignment: .top) {
                         Button {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconSG)
+                            Image(.homeIconSaracen)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
                         }
-                        Spacer()
+                        
                     }.padding([.horizontal, .top])
                 }
-                
-                Image(.choseeGameTextSG)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 150:75)
-                
+                Spacer()
                 VStack {
                     Button {
                         game1 = true
                     } label: {
-                        Image(.game1SG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
-                          
+                       
+                        ZStack {
+                            Image(.btnBgSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                            
+                            TextWithBorderSaracen(text: "GUESS THE NUMBER", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                
+                                .textCase(.uppercase)
+                            
+                                
+                        }
                     }
                     
                     Button {
                         game2 = true
                     } label: {
-                        Image(.game2SG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
-                          
+                       
+                        ZStack {
+                            Image(.btnBgSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                            
+                            TextWithBorderSaracen(text: "MATCH THE CARDS", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                
+                                .textCase(.uppercase)
+                            
+                                
+                        }
                     }
                     
                     Button {
                         game3 = true
                     } label: {
-                        Image(.game3SG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
-                          
+                      
+                        ZStack {
+                            Image(.btnBgSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                            
+                            TextWithBorderSaracen(text: "SIMON SAYS", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                
+                                .textCase(.uppercase)
+                            
+                                
+                        }
                     }
                     
                     Button {
                         game4 = true
                     } label: {
-                        Image(.game4SG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
+                        ZStack {
+                            Image(.btnBgSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 180:90)
+                            
+                            TextWithBorderSaracen(text: "MAZE CHALLENGE", font: .system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .black), textColor: .white, borderColor: .main, borderWidth: 1)
+                                
+                                .textCase(.uppercase)
+                            
+                                
+                        }
                           
                     }
                 }
                 
                 Spacer()
                 
-            }
+            }.padding()
         }.background(
             ZStack {
-                Image(.menuBgSG)
+                Image(.menuBgSaracen)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
             }
         )
         .fullScreenCover(isPresented: $game1) {
-            CoupleGameView()
+            SaracenGuessNumberGame()
         }
         .fullScreenCover(isPresented: $game2) {
-            NumberGuessGame()
+            SaracenCoupleGameView()
         }
         .fullScreenCover(isPresented: $game3) {
-            LabirintGameView()
+            SaracenRepeatSequenceGameView()
         }
         .fullScreenCover(isPresented: $game4) {
-            MemorizationViewSG()
+              SaracenMazeGameView()
         }
     }
 }
