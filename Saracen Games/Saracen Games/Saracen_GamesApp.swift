@@ -4,7 +4,7 @@ import SwiftUI
 struct Saracen_GamesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SaracenMainMenuView()
         }
     }
 }

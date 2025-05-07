@@ -4,17 +4,12 @@ class UserSaracen: ObservableObject {
     
     static let shared = UserSaracen()
     
-    @AppStorage("achievement") var achievementNum: Int = 0
     @AppStorage("money") var storedMoney: Int = 100
     @Published var money: Int = 100
     @Published var oldMoney = 0
     
     private init() {
         money = storedMoney
-    }
-    
-    func achievementDone() {
-        achievementNum += 1
     }
     
     func updateUserMoney(for money: Int) {
