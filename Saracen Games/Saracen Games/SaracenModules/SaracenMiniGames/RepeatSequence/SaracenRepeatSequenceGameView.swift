@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct             SaracenRepeatSequenceGameView: View {
+struct SaracenRepeatSequenceGameView: View {
     @StateObject var user = SGUser.shared
     @Environment(\.presentationMode) var presentationMode
     
@@ -198,5 +198,5 @@ struct MemorizationCardView: View {
 }
 
 #Preview {
-                SaracenRepeatSequenceGameView()
+    SaracenRepeatSequenceGameView()
 }
