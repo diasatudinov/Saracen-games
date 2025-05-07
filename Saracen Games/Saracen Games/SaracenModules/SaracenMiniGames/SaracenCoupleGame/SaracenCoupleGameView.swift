@@ -1,11 +1,3 @@
-//
-//  SaracenCoupleGameView.swift
-//  Saracen Games
-//
-//  Created by Dias Atudinov on 07.05.2025.
-//
-
-
 import SwiftUI
 import AVFoundation
 
@@ -15,9 +7,8 @@ struct SaracenCoupleGameView: View {
     @StateObject var user = SGUser.shared
     @State private var audioPlayer: AVAudioPlayer?
     
-    @State private var cards: [Card] = []
-    @State private var selectedCards: [Card] = []
-    @State private var message: String = "Find all matching cards!"
+    @State private var cards: [SaracenCard] = []
+    @State private var selectedCards: [SaracenCard] = []
     @State private var gameEnded: Bool = false
     @State private var isWin: Bool = false
     @State private var pauseShow: Bool = false
@@ -88,7 +79,7 @@ struct SaracenCoupleGameView: View {
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 20) {
                         ForEach(cards) { card in
-                            CardView(card: card)
+                            SaracenCardView(card: card)
                                 .onTapGesture {
                                     flipCard(card)
                                    
@@ -105,47 +96,43 @@ struct SaracenCoupleGameView: View {
                 }
             
             if gameEnded {
-//                if isWin {
-//                    ZStack {
-//                        Image(.coupleGameBgSG)
-//                            .resizable()
-//                        VStack(spacing: -40) {
-//                            Image(.winTextSG)
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 800:400)
-//                            
-//                            Button {
-//                                setupGame()
-//                            } label: {
-//                                Image(.nextButtonSG)
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
-//                            }
-//                        }
-//                    }
-//                } else {
-//                    ZStack {
-//                        Image(.coupleGameBgSG)
-//                            .resizable()
-//                        VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? -80:-40) {
-//                            Image(.loseTextSG)
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 360:180)
-//                            
-//                            Button {
-//                                setupGame()
-//                            } label: {
-//                                Image(.tryAgainIconSG)
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 300:150)
-//                            }
-//                        }
-//                    }
-//                }
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                if isWin {
+                    ZStack(alignment: .bottom) {
+                        Image(.coupleGameWinBgSaracen)
+                            .resizable()
+                            .scaledToFit()
+                            
+                        Button {
+                            setupGame()
+                            
+                        } label: {
+                            Image(.restartIconSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                        }.offset(y: 20)
+                        
+                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                } else {
+                    ZStack(alignment: .bottom) {
+                        Image(.coupleGameLoseBgSaracen)
+                            .resizable()
+                            .scaledToFit()
+                            
+                        Button {
+                            setupGame()
+                            
+                        } label: {
+                            Image(.restartIconSaracen)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 130:65)
+                        }.offset(y: 20)
+                        
+                    }.frame(height:  SGDeviceManager.shared.deviceType == .pad ? 878:439)
+                }
             }
            
             
@@ -160,9 +147,6 @@ struct SaracenCoupleGameView: View {
                 timer.upstream.connect().cancel()
             }
         }
-//        .onAppear {
-//            startTimer()
-//        }
         .background(
             Image(.miniGameBgSaracen)
                 .resizable()
@@ -186,18 +170,17 @@ struct SaracenCoupleGameView: View {
     private func setupGame() {
         // Reset state
         selectedCards.removeAll()
-        message = "Find all matching cards!"
         gameEnded = false
         timeLeft = 60
         // Restart timer
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         // Generate cards
-        var gameCards = [Card]()
+        var gameCards = [SaracenCard]()
         
         // Add 4 cards of each type (24 cards total for 6 types)
         for type in cardTypes {
-            gameCards.append(Card(type: type))
-            gameCards.append(Card(type: type))
+            gameCards.append(SaracenCard(type: type))
+            gameCards.append(SaracenCard(type: type))
         }
                 
         // Shuffle cards
@@ -207,7 +190,7 @@ struct SaracenCoupleGameView: View {
         cards = Array(gameCards.prefix(gridSize * gridSize))
     }
     
-    private func flipCard(_ card: Card) {
+    private func flipCard(_ card: SaracenCard) {
         guard let index = cards.firstIndex(where: { $0.id == card.id }),
               !cards[index].isFaceUp,
               !cards[index].isMatched,
@@ -217,11 +200,7 @@ struct SaracenCoupleGameView: View {
         cards[index].isFaceUp = true
         selectedCards.append(cards[index])
         
-        if card.type == "cardSemaphore" {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                resetAllCards()
-            }
-        } else if selectedCards.count == 2 {
+       if selectedCards.count == 2 {
             checkForMatch()
         }
     }
@@ -235,10 +214,8 @@ struct SaracenCoupleGameView: View {
                     cards[index].isMatched = true
                 }
             }
-            message = "You found a match! Keep going!"
             isWin = true
         } else {
-            message = "Not a match. Try again!"
             isWin = false
         }
         
@@ -253,24 +230,11 @@ struct SaracenCoupleGameView: View {
             
             // Check if all cards are matched
             if cards.allSatisfy({ $0.isMatched || $0.type == "cardSemaphore" }) {
-                message = "Game Over! You found all matches!"
                 gameEnded = true
-                user.updateUserMoney(for: 100)
+                user.updateUserMoney(for: 30)
             }
         }
     }
-    
-    private func resetAllCards() {
-        message = "Red semaphore! All cards reset!"
-        for index in cards.indices {
-            cards[index].isFaceUp = false
-            
-            cards[index].isMatched = false
-            
-        }
-        selectedCards.removeAll()
-    }
-    
 }
 
 #Preview {

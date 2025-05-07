@@ -1,11 +1,3 @@
-//
-//  Card.swift
-//  Saracen Games
-//
-//  Created by Dias Atudinov on 07.05.2025.
-//
-
-
 import Foundation
 
 struct SaracenCard: Identifiable {

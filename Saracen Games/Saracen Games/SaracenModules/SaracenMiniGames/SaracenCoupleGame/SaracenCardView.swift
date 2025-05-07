@@ -1,15 +1,7 @@
-//
-//  CardView.swift
-//  Saracen Games
-//
-//  Created by Dias Atudinov on 07.05.2025.
-//
-
-
 import SwiftUI
 
 struct SaracenCardView: View {
-    let card: Card
+    let card: SaracenCard
 
     var body: some View {
         ZStack {
@@ -29,5 +21,5 @@ struct SaracenCardView: View {
 }
 
 #Preview {
-    SaracenCardView(card: Card(type: "cardFace1SG"))
+    SaracenCardView(card: SaracenCard(type: "cardFace1SG"))
 }
