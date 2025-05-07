@@ -37,7 +37,7 @@ struct SaracenMainMenuView: View {
                     .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 320:160)
                     .padding(.bottom)
                 
-                VStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 80:40) {
+                VStack(spacing: 40) {
                     Button {
                         showGame = true
                         
@@ -135,7 +135,7 @@ struct SaracenMainMenuView: View {
 //            }
 //        }
         .fullScreenCover(isPresented: $showGame) {
-            //            ChooseLevelView(shopVM: shopVM, achievementVM: achievementVM)
+            SaracenGameLevelsView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
             SaracenMiniGamesChooseView()

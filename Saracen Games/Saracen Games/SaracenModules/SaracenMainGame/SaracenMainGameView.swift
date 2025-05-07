@@ -1,19 +1,11 @@
-//
-//  GameView.swift
-//  Saracen Games
-//
-//  Created by Dias Atudinov on 07.05.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
 struct SaracenMainGameView: View {
     @Environment(\.presentationMode) var presentationMode
    
-    @State var gameScene: GameScene = {
-        let scene = GameScene(size: UIScreen.main.bounds.size)
+    @State var gameScene: SaracenGameScene = {
+        let scene = SaracenGameScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
@@ -32,7 +24,7 @@ struct SaracenMainGameView: View {
     
     var body: some View {
         ZStack {
-            SpriteViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
+            SaracenViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
                 .ignoresSafeArea()
             
             VStack(spacing: SaracenDeviceInfo.shared.deviceType == .pad ? 200:100) {

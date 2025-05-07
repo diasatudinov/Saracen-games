@@ -75,7 +75,7 @@ struct SaracenGameLevelsView: View {
             }
         )
         .fullScreenCover(isPresented: $openGame) {
-            GameView(shopVM: shopVM, level: selectedIndex)
+            SaracenMainGameView(shopVM: shopVM, level: selectedIndex)
         }
     }
 }

@@ -14,10 +14,10 @@ class SaracenStoreViewModel: ObservableObject {
         ItemSaracen(name: "bg4", image: "gameBg4SG", icon: "bgItem4IconSaracen", section: .backgrounds, price: 100),
         
         
-        ItemSaracen(name: "skin1", image: "imageSkin1SG", icon: "iconSkin1Saracen", section: .skin, price: 100),
-        ItemSaracen(name: "skin2", image: "imageSkin2SG", icon: "iconSkin2Saracen", section: .skin, price: 100),
-        ItemSaracen(name: "skin3", image: "imageSkin3SG", icon: "iconSkin3Saracen", section: .skin, price: 100),
-        ItemSaracen(name: "skin4", image: "imageSkin4SG", icon: "iconSkin4Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin1", image: "imageSkin2Saracen", icon: "iconSkin1Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin2", image: "imageSkin1Saracen", icon: "iconSkin2Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin3", image: "imageSkin3Saracen", icon: "iconSkin3Saracen", section: .skin, price: 100),
+        ItemSaracen(name: "skin4", image: "imageSkin4Saracen", icon: "iconSkin4Saracen", section: .skin, price: 100),
          
     ]
     
@@ -49,7 +49,7 @@ class SaracenStoreViewModel: ObservableObject {
     }
     
     private let userDefaultsBgKey = "BgKeySaracen"
-    private let userDefaultsPersonKey = "BirdKeySaracen"
+    private let userDefaultsPersonKey = "SkinItemKeySaracen"
     private let userDefaultsBoughtKey = "boughtItemsSaracen"
 
     
