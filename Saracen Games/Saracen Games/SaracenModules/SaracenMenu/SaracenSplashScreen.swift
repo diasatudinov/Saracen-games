@@ -4,6 +4,9 @@ struct SaracenSplashScreen: View {
     @State private var scale: CGFloat = 1.0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
+    private var loaderWidth: CGFloat = {
+       return SaracenDeviceInfo.shared.deviceType == .pad ? 500:250
+    }()
     var body: some View {
         ZStack {
             Image(.gameBgSG)
@@ -19,13 +22,13 @@ struct SaracenSplashScreen: View {
                     
                     
                 }
-                .frame(height: 200)
-                .padding(.top, 70)
+                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 400:200)
+                .padding(.top, SaracenDeviceInfo.shared.deviceType == .pad ? 100:70)
                 
                 Image(.subtitleImgSG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 82)
+                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 164:82)
                     .padding(.top, 100)
                 
                
@@ -42,12 +45,12 @@ struct SaracenSplashScreen: View {
                         .scaledToFit()
                         .mask(
                             Rectangle()
-                                .frame(width: progress * 250)
-                                .padding(.trailing, (1 - progress) * 250)
+                                .frame(width: progress * loaderWidth)
+                                .padding(.trailing, (1 - progress) * loaderWidth)
                         )
                     
                 }
-                .frame(width: 250)
+                .frame(width: SaracenDeviceInfo.shared.deviceType == .pad ? 500:250)
                 .padding(.top, 90)
                 Spacer()
             }
